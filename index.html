@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TEMPAHAN LAPTOP PdPc Bidang Kemanusiaan</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <h1>TEMPAHAN LAPTOP PdPc Bidang Kemanusiaan</h1>
+        </div>
+    </header>
+
+    <section class="booking">
+        <h2>Tempahan</h2>
+        <form id="bookingForm">
+            <div class="form-group">
+                <label for="date">Tarikh:</label>
+                <input type="date" id="date" name="date" required>
+            </div>
+            <div class="form-group">
+                <label for="name">Nama Guru:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="subject">Subjek Guru:</label>
+                <input type="text" id="subject" name="subject" required>
+            </div>
+            <div class="form-group">
+                <label for="day">Hari:</label>
+                <select id="day" name="day" required>
+                    <option value="ISNIN">ISNIN</option>
+                    <option value="SELASA">SELASA</option>
+                    <option value="RABU">RABU</option>
+                    <option value="KHAMIS">KHAMIS</option>
+                    <option value="JUMAAT">JUMAAT</option>
+                    <option value="SABTU">SABTU</option>
+                    <option value="AHAD">AHAD</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="startTime">Masa Dari:</label>
+                <input type="time" id="startTime" name="startTime" min="07:30" max="16:00" required>
+            </div>
+            <div class="form-group">
+                <label for="endTime">Masa Hingga:</label>
+                <input type="time" id="endTime" name="endTime" min="07:30" max="16:00" required>
+            </div>
+            <div class="form-group">
+                <label for="computer">Laptop:</label>
+                <select id="computer" name="computer" required>
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                </select>
+            </div>
+            <button type="submit">Tempah</button>
+        </form>
+    </section>
+
+    <section class="report">
+        <h2>Report</h2>
+        <table id="reportTable">
+            <thead>
+                <tr>
+                    <th>Bil</th>
+                    <th>Tarikh</th>
+                    <th>Hari</th>
+                    <th>Masa Dari</th>
+                    <th>Masa Hingga</th>
+                    <th>Nama Guru</th>
+                    <th>Subjek Guru</th>
+                    <th>Laptop</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Report data will appear here -->
+            </tbody>
+        </table>
+    </section>
+
+    <script>
+        document.getElementById('bookingForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const date = document.getElementById('date').value;
+            const name = document.getElementById('name').value;
+            const subject = document.getElementById('subject').value;
+            const day = document.getElementById('day').value;
+            const startTime = document.getElementById('startTime').value;
+            const endTime = document.getElementById('endTime').value;
+            const computer = document.getElementById('computer').value;
+
+            const reportTable = document.getElementById('reportTable').getElementsByTagName('tbody')[0];
+            const newRow = reportTable.insertRow();
+
+            const cellBil = newRow.insertCell(0);
+            const cellDate = newRow.insertCell(1);
+            const cellDay = newRow.insertCell(2);
+            const cellStartTime = newRow.insertCell(3);
+            const cellEndTime = newRow.insertCell(4);
+            const cellName = newRow.insertCell(5);
+            const cellSubject = newRow.insertCell(6);
+            const cellComputer = newRow.insertCell(7);
+
+            cellBil.textContent = reportTable.rows.length;
+            cellDate.textContent = date;
+            cellDay.textContent = day;
+            cellStartTime.textContent = startTime;
+            cellEndTime.textContent = endTime;
+            cellName.textContent = name;
+            cellSubject.textContent = subject;
+            cellComputer.textContent = computer;
+
+            document.getElementById('bookingForm').reset();
+        });
+    </script>
+</body>
+</html>
